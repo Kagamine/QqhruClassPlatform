@@ -16,6 +16,7 @@ namespace Qqhru.Models
             Catalogs = DB.Catalogs;
             Articles = DB.Articles;
             Teachers = DB.Users;
+            Researches = DB.Researches;
         }
 
         #region DBContext
@@ -26,7 +27,7 @@ namespace Qqhru.Models
         #region 数据源
         public DbSet<Catalog> Catalogs { get; set; }
 
-        [WhereOptional("CatalogID = $cid")]
+        [WhereOptional("CatalogID = $cid", typeof(int))]
         [OrderBy("Time desc")]
         [Paging(5)]
         public DbSet<Article> Articles { get; set; }
@@ -34,6 +35,10 @@ namespace Qqhru.Models
         [OrderBy("Title desc")]
         [Paging(50)]
         public DbSet<User> Teachers { get; set; }
+
+        [Where("UserID = $uid", typeof(int))]
+        [OrderBy("Time desc")]
+        public DbSet<Research> Researches { get; set; }
         #endregion
 
         #region Ports
@@ -48,6 +53,10 @@ namespace Qqhru.Models
         [CollectionPort]
         [Binding("Teachers")]
         public List<User> TeacherList { get; set; }
+
+        [CollectionPort]
+        [Binding("Researches")]
+        public List<Research> ResearchList { get; set; }
         #endregion
     }
 }

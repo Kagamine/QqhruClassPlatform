@@ -23,3 +23,9 @@
         </ul>
     </div>
 </div>
+<script>
+    if (@Request.RequestContext.RouteData.Values["id"] != null)
+    {
+        Collection.ArticleList.cid = @Request.RequestContext.RouteData.Values["id"];
+    }
+</script>

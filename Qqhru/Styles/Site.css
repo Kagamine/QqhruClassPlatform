@@ -387,3 +387,17 @@ table {
 .table tr:nth-child(odd), .table-inline tr:nth-child(odd) {
     background-color: rgb(245,245,245);
 }
+
+.row-title {
+    background-color: #f0f0f0;
+    width: 180px;
+}
+
+.detail-table {
+    width: 100%;
+}
+
+.detail-table td {
+    padding: 16px 10px;
+    border: 1px solid #ddd;
+}

@@ -1,8 +1,59 @@
-﻿
+﻿@model Qqhru.Models.User
 @{
     ViewBag.Title = "Show";
 }
 
-<div class="left"></div>
+<div class="left">
+    <h2>基本信息</h2>
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">ID</td>
+            <td>@Model.ID</td>
+        </tr>
+        <tr>
+            <td class="row-title">姓名</td>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <td class="row-title">性别</td>
+            <td>@Model.Sex</td>
+        </tr>
+        <tr>
+            <td class="row-title">专业</td>
+            <td>@(Model.ProfessionID == null ? "无" : Model.Profession.Title)</td>
+        </tr>
+        <tr>
+            <td class="row-title">课组</td>
+            <td>@(Model.GroupID == null ? "无" : Model.Group.Title)</td>
+        </tr>
+        <tr>
+            <td class="row-title">职称</td>
+            <td>@Model.Title</td>
+        </tr>
+    </table>
+    <br />
+    <h2>科研信息</h2>
+    <table class="table">
+        <thead class="tl">
+            <tr>
+                <th>上传时间</th>
+                <th>备注</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody data-collection="ResearchList">
+            <tr class="template researchlist">
+                <td>$ResearchList._Time</td>
+                <td>$ResearchList.Hint</td>
+                <td>
+                    <a href="/Teacher/Research/$ResearchList.ID">下载</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <div class="right">@Html.Partial("~/Views/Teacher/Sidebar.cshtml")</div>
 
+<script>
+    Collection.ResearchList.uid = @Request.RequestContext.RouteData.Values["id"];
+</script>
