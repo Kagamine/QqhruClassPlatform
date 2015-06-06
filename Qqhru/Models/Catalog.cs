@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Qqhru.Models
 {
@@ -11,15 +12,9 @@ namespace Qqhru.Models
     {
         public int ID { get; set; }
 
-        [ForeignKey("Father")]
-        public int? FatherID { get; set; }
-
-        public virtual Catalog Father { get; set; }
-
         public string Title { get; set; }
 
-        public virtual ICollection<Catalog> Catalogs { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Article> Articles { get; set; }
     }
 }

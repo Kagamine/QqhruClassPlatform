@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>教师信息</h2>
+
+<table class="table">
+    <thead>
+        <tr class="tl">
+            <th>ID</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>专业</th>
+            <th>课组</th>
+            <th>职称</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody data-collection="TeacherList" data-expression="flow">
+        <tr class="template teacherlist">
+            <td>$TeacherList.ID</td>
+            <td>$TeacherList.Name</td>
+            <td>$TeacherList._Sex</td>
+            <td>$TeacherList.ProfessionTitle</td>
+            <td>$TeacherList.GroupTitle</td>
+            <td>$TeacherList._Title</td>
+            <td>
+                <a href="/Teacher/Show/$TeacherList.ID">查看详细资料</a>
+                @if (ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.超级管理员)
+                {
+                    <a href="/Teacher/Delete/$TeacherList.ID">删除用户</a>
+                }
+            </td>
+        </tr>
+
+    </tbody>
+</table>

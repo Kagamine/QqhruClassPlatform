@@ -20,7 +20,13 @@ namespace Qqhru.Controllers
                 CurrentUser = (from u in DB.Users
                                where u.Username == User.Identity.Name
                                select u).Single();
+                ViewBag.CurrentUser = CurrentUser;
             }
+        }
+
+        public ActionResult Msg(string msg)
+        {
+            return RedirectToAction("Message", "Shared", new { msg = msg });
         }
     }
 }

@@ -16,8 +16,10 @@ namespace Qqhru.Models
         /// 系主任
         /// </summary>
         [ForeignKey("User")]
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
 
         public virtual User User { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
     }
 }

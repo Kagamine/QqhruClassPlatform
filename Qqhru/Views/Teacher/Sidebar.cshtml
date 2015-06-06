@@ -1,0 +1,14 @@
+﻿<div class="block">
+    <h3>操作</h3>
+    <ul>
+        <li><a href="/Teacher/Show/@Html.ViewContext.RouteData.Values["id"]">教师信息</a></li>
+        @if (ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.超级管理员 || Html.ViewContext.RouteData.Values["id"] == ViewBag.CurrentUser.ID.ToString())
+        {
+            <li><a href="/Teacher/Edit/@Html.ViewContext.RouteData.Values["id"]">编辑教师</a></li>
+        }
+        @if (ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.超级管理员)
+        {
+            <li><a href="/Teacher/Delete/@Html.ViewContext.RouteData.Values["id"]">删除教师</a></li>
+        }
+    </ul>
+</div>

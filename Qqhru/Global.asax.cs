@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using CodeComb.Yuuko;
 
 namespace Qqhru
 {
@@ -13,6 +14,10 @@ namespace Qqhru
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            Yuuko.RegisterSessonControl(Session);
         }
     }
 }

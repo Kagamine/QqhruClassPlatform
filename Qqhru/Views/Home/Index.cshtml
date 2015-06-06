@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<p><img src="~/Images/banner.png" class="banner" alt="" /></p>
+<div class="left">
+    <div data-collection="ArticleList" data-expression="flow">
+        <div class="template articlelist">
+            <h2><a href="/Article/Show/$ArticleList.ID">$ArticleList.Title</a></h2>
+            <div class="subtitle">
+                <a href="/Teacher/Show/$ArticleList.UserID">$ArticleList.Username</a> @@<a href="/?cid=$ArticleList.CatalogID">$ArticleList.CatalogTitle</a> 发表于 $ArticleList._Time
+            </div>
+            <div class="content" data-field="ArticleList.Sumamry"></div>
+        </div>
+    </div>
+</div>
+
+<div class="right">
+    <div class="block">
+        <h3>文章分类</h3>
+        <ul data-collection="CatalogList">
+            <li class="template cataloglist"><a href="/?cid=$CatalogList.ID">$CatalogList.Title</a></li>
+        </ul>
+    </div>
+</div>

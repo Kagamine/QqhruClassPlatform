@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.yuuko-0.9.9.7.min.js"></script>
+    <script src="/yuuko/js"></script>
+    <script src="~/Scripts/site.js"></script>
+</head>
+<body>
+    <div class="nav">
+        <div class="container">
+            <a href="#">计控学院课程平台</a>
+            <a href="/">文章管理</a>
+            <a href="/Teacher">教师信息</a>
+            <a href="/Class">课程管理</a>
+            <a href="/Forum">论坛交流</a>
+        </div>
+    </div>
+    <div class="container wrap-cont">
+        @RenderBody()
+        <div class="clr"></div>
+        <div class="footer">齐齐哈尔大学 软件112 李纪磊 毕业设计</div>
+    </div>
+    <script>
+        var YuukoToken = '@Session["YuukoToken"]';
+    </script>
+</body>
+</html>
