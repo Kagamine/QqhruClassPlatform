@@ -374,6 +374,7 @@
     <Content Include="Views\Admin\Catalog.cshtml" />
     <Content Include="Views\Admin\Check.cshtml" />
     <Content Include="Views\Teacher\Edit.cshtml" />
+    <Content Include="Views\Teacher\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

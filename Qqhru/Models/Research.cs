@@ -28,6 +28,8 @@ namespace Qqhru.Models
 
         public string Hint { get; set; }
 
+        public string FileName { get; set; }
+
         public override bool Equals(object obj)
         {
             var data = obj as Research;

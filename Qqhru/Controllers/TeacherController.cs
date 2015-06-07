@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using Qqhru.Models;
 
 namespace Qqhru.Controllers
@@ -32,7 +33,7 @@ namespace Qqhru.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, string Name, Sex Sex, string Profession, int GroupID, Title Title)
+        public ActionResult Edit(int id, string Name, Sex Sex, string Profession, int? GroupID, Title Title)
         {
             var user = DB.Users.Find(id);
             user.Name = Name;
@@ -44,9 +45,54 @@ namespace Qqhru.Controllers
             return Redirect("/Teacher/Show/" + id);
         }
 
-        public ActionResult ResearchUpload(int id)
+        [HttpPost]
+        public ActionResult ResearchUpload(int id, string Hint)
         {
+            var File = Request.Files["file"];
+            var research = new Research
+            { 
+                Hint = Hint,
+                UserID = CurrentUser.ID,
+                Time = DateTime.Now
+            };
+            if (File != null)
+            {
+                using (var binaryReader = new BinaryReader(File.InputStream))
+                {
+                    research.File = binaryReader.ReadBytes(File.ContentLength);
+                    research.FileName = File.FileName;
+                }
+            }
+            DB.Researches.Add(research);
+            DB.SaveChanges();
+            return Redirect("/Teacher/Show/" + id);
+        }
 
+        public ActionResult Research(int id)
+        {
+            var research = DB.Researches.Find(id);
+            return File(research.File, "application/octet-stream", research.FileName);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(string Username, string Password, UserRole Role)
+        {
+            DB.Users.Add(new Models.User {
+                Username = Username,
+                Password = Password,
+                Role = Role,
+                Name = "新用户",
+                Sex = Sex.男,
+                Title = Title.助教,
+                Profession = ""
+            });
+            DB.SaveChanges();
+            return Redirect("/Teacher");
         }
     }
 }

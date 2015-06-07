@@ -6,9 +6,5 @@
         {
             <li><a href="/Group/Edit/@Html.ViewContext.RouteData.Values["id"]">编辑课组</a></li>
         }
-        @if (ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.超级管理员)
-        {
-            <li><a href="/Group/Delete/@Html.ViewContext.RouteData.Values["id"]">删除课组</a></li>
-        }
     </ul>
 </div>

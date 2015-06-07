@@ -109,6 +109,11 @@ namespace Qqhru.Models
         [DetailPort(DetailPortFunction.Delete, DetailPortFunction.Edit, DetailPortFunction.Insert)]
         [Binding("Teachers")]
         public User TeacherDetail { get; set; }
+
+
+        [DetailPort(DetailPortFunction.Delete, DetailPortFunction.Edit, DetailPortFunction.Insert)]
+        [Binding("Researches")]
+        public User ResearchDetail { get; set; }
         #endregion
     }
 }

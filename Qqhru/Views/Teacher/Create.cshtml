@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>添加用户</h2>
+@using (Html.BeginForm("Create", "Teacher", FormMethod.Post))
+{
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">用户名</td>
+            <td><input type="text" class="textbox w-3" name="Username" /></td>
+        </tr>
+        <tr>
+            <td class="row-title">密码</td>
+            <td><input type="password" class="textbox w-3" name="Password" /></td>
+        </tr>
+        <tr>
+            <td class="row-title">角色</td>
+            <td>
+                <select name="Role">
+                    <option>老师</option>
+                    <option>超级管理员</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <p><input type="submit" class="button blue" value="添加" /></p>
+}

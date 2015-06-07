@@ -48,12 +48,16 @@
                 <th>操作</th>
             </tr>
         </thead>
-        <tbody data-collection="ResearchList">
+        <tbody data-collection="ResearchList" data-identifier="ID">
             <tr class="template researchlist">
                 <td>$ResearchList._Time</td>
                 <td>$ResearchList.Hint</td>
                 <td>
                     <a href="/Teacher/Research/$ResearchList.ID">下载</a>
+                    @if (ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.超级管理员 || Model.ID == ViewBag.CurrentUser.ID)
+                    {
+                        <a href="javascript: DeletePort('ResearchDetail', $Research.ID)">删除</a>
+                    }
                 </td>
             </tr>
         </tbody>
@@ -63,4 +67,7 @@
 
 <script>
     Collection.ResearchList.uid = @Request.RequestContext.RouteData.Values["id"];
+    DetailEvents.ResearchDetail.onDeleted = function (key, port) {
+        $("#researchlist-collection-" + key).remove();
+    };
 </script>
