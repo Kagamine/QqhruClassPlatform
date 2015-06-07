@@ -1,56 +1,62 @@
-﻿
+﻿@model Qqhru.Models.User
 @{
     ViewBag.Title = "Edit";
 }
 
 <div class="left">
     <h2>编辑教师信息</h2>
-    <table class="detail-table" data-detail="TeacherDetail">
-        <tr>
-            <td class="row-title">姓名</td>
-            <td><input type="text" class="textbox w-3" data-field="TeacherDetail.Name" /></td>
-        </tr>
-        <tr>
-            <td class="row-title">性别</td>
-            <td>
-                <select data-field="TeacherDetail.Sex">
-                    <option>男</option>
-                    <option>女</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td class="row-title">专业</td>
-            <td><input type="text" class="textbox w-3" data-field="TeacherDetail.Profession" /></td>
-        </tr>
-        <tr>
-            <td class="row-title">课组</td>
-            <td>
-                <select data-field="TeacherDetail.GroupID">
-                    <option>无</option>
-                    @foreach (Qqhru.Models.Group g in ViewBag.Groups)
-                    {
-                        <option value="@g.ID">@g.Title</option>
-                    }
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td class="row-title">职称</td>
-            <td>
-                <select data-field="TeacherDetail.Title">
-                    <option>助教</option>
-                    <option>讲师</option>
-                    <option>副教授</option>
-                    <option>教授</option>
-                </select>
-            </td>
-        </tr>
-    </table>
+    @using (Html.BeginForm("Edit", "Teacher", FormMethod.Post))
+    {
+        <input type="hidden" value="@Model.ID" name="id" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">姓名</td>
+                <td><input type="text" class="textbox w-3" value="@Model.Name" /></td>
+            </tr>
+            <tr>
+                <td class="row-title">性别</td>
+                <td>
+                    <select data-field="TeacherDetail.Sex">
+                        <option @(Model.Sex == Qqhru.Models.Sex.男 ? "selected" : "")>男</option>
+                        <option @(Model.Sex == Qqhru.Models.Sex.女 ? "selected" : "")>女</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">专业</td>
+                <td><input type="text" class="textbox w-3" value="@Model.Profession" /></td>
+            </tr>
+            <tr>
+                <td class="row-title">课组</td>
+                <td>
+                    <select data-field="TeacherDetail.GroupID">
+                        <option>无</option>
+                        @foreach (Qqhru.Models.Group g in ViewBag.Groups)
+                        {
+                            <option value="@g.ID" @(Model.GroupID == g.ID ? "selected" : "")>@g.Title</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">职称</td>
+                <td>
+                    <select data-field="TeacherDetail.Title">
+                        <option @(Model.Title == Qqhru.Models.Title.助教 ? "selected" : "")>助教</option>
+                        <option @(Model.Title == Qqhru.Models.Title.讲师 ? "selected" : "")>讲师</option>
+                        <option @(Model.Title == Qqhru.Models.Title.副教授 ? "selected" : "")>副教授</option>
+                        <option @(Model.Title == Qqhru.Models.Title.教授 ? "selected" : "")>教授</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <p><input type="submit" class="button blue" value="提交" /></p>
+    }
     <br />
     <h2>科研信息</h2>
     @using (Html.BeginForm("ResearchUpload", "Teacher", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
+        <input type="hidden" value="@Model.ID" name="id" />
         <p>
             <input type="file" name="file" />
         </p>
