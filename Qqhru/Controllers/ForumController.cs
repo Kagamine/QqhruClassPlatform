@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace Qqhru.Controllers
 {
     [Authorize]
-    public class ForumController : Controller
+    public class ForumController : BaseController
     {
         // GET: Forum
         public ActionResult Index()
