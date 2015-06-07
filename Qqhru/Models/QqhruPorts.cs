@@ -17,6 +17,9 @@ namespace Qqhru.Models
             Articles = DB.Articles;
             Teachers = DB.Users;
             Researches = DB.Researches;
+            Groups = DB.Groups;
+            GroupMembers = DB.Users;
+            Classes = DB.Classes;
         }
 
         #region DBContext
@@ -31,7 +34,7 @@ namespace Qqhru.Models
         [OrderBy("Time desc")]
         [Paging(5)]
         public DbSet<Article> Articles { get; set; }
-        
+
         [OrderBy("Title desc")]
         [Paging(50)]
         public DbSet<User> Teachers { get; set; }
@@ -39,6 +42,17 @@ namespace Qqhru.Models
         [Where("UserID = $uid", typeof(int))]
         [OrderBy("Time desc")]
         public DbSet<Research> Researches { get; set; }
+
+        [OrderBy("ID asc")]
+        [Paging(50)]
+        public DbSet<Group> Groups { get; set; }
+
+        [Where("GroupID = $gid", typeof(int))]
+        public DbSet<User> GroupMembers { get; set; }
+
+        [OrderBy("ID desc")]
+        [Paging(50)]
+        public DbSet<Class> Classes { get; set; }
         #endregion
 
         #region Ports
@@ -57,6 +71,22 @@ namespace Qqhru.Models
         [CollectionPort]
         [Binding("Researches")]
         public List<Research> ResearchList { get; set; }
+
+        [CollectionPort]
+        [Binding("Groups")]
+        public List<Group> GroupList { get; set; }
+
+        [CollectionPort]
+        [Binding("GroupMembers")]
+        public List<User> GroupMemberList { get; set; }
+
+        [CollectionPort]
+        [Binding("Classes")]
+        public List<Class> ClassList { get; set; }
+
+        [DetailPort(DetailPortFunction.Delete, DetailPortFunction.Edit, DetailPortFunction.Insert)]
+        [Binding("Catalogs")]
+        public Catalog CatalogDetail { get; set; }
         #endregion
     }
 }

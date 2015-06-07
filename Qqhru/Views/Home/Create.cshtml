@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>新建文章</h2>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">标题</td>
+            <td>@Html.TextBox("Title", "", new { @class = "textbox w-3" })</td>
+        </tr>
+        <tr>
+            <td class="row-title">分类</td>
+            <td>
+                <select>
+                    @foreach (Qqhru.Models.Catalog c in ViewBag.Catalogs)
+                {
+                        <option value="c.ID">@c.Title</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">内容</td>
+            <td><textarea class="ckeditor" name="Content"></textarea></td>
+        </tr>
+    </table>
+    <p><input type="submit" value="提交" class="button blue" /></p>
+}

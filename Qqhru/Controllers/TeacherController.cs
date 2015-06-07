@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Qqhru.Controllers
 {
+    [Authorize]
     public class TeacherController : BaseController
     {
         // GET: Teacher

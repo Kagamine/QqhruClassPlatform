@@ -25,5 +25,17 @@ namespace Qqhru.Models
         public string _Time { get { return Time.ToString("yyyy-MM-dd HH:mm"); } }
 
         public string Hint { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var data = obj as Research;
+            if (data.ID == this.ID) return true;
+            else return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.ID;
+        }
     }
 }

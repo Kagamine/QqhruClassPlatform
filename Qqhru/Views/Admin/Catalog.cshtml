@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Catalog";
+}
+
+<h2>分类管理</h2>
+
+<table class="table">
+    <thead>
+        <tr class="tl">
+            <th>ID</th>
+            <th>分类名称</th>
+            <th>文章数</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody data-collection="CatalogList" data-identifier="ID">
+        <tr class="template cataloglist">
+            <td>$CatalogList.ID</td>
+            <td>$CatalogList.Title</td>
+            <td>$CatalogList.Count</td>
+            <td>
+                <a href="javascript: DeletePort('CatalogDetail', 'CatalogList.ID')">删除</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

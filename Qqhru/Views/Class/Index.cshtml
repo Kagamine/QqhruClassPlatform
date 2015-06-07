@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>课程管理</h2>
+<table class="table">
+    <thead>
+        <tr class="tl">
+            <th>ID</th>
+            <th>课程名</th>
+            <th>学期</th>
+            <th>教师</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody data-collection="ClassList" data-expression="flow">
+        <tr class="template classlist">
+            <td>$ClassList.ID</td>
+            <td>$ClassList.Title</td>
+            <td>$ClassList.Term</td>
+            <td><a href="/Teacher/Show/$ClassList.ID">$ClassList.Username</a></td>
+            <td>
+                <a target="_blank" href="/Classes/Plan/$ClassList.ID">查看教学计划</a>
+                <a target="_blank" href="/Classes/Plan2/$ClassList.ID">查看教案</a>
+                <a href="/Classes/Edit/$ClassList.ID">修改课程</a>
+                <a href="/Classes/Delete/$ClassList.ID">删除课程</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

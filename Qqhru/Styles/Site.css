@@ -318,7 +318,7 @@ a.dark:focus, a.dark:hover {
 }
 
 .block {
-    background-color: #fff;
+    background-color: #fafafa;
     padding: 20px;
 }
 
@@ -400,4 +400,16 @@ table {
 .detail-table td {
     padding: 16px 10px;
     border: 1px solid #ddd;
+}
+
+select {
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    margin: 0;
+    width: 150px;
 }

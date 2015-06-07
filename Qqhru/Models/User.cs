@@ -80,5 +80,17 @@ namespace Qqhru.Models
         {
             get { return Researches.Count; }
         }
+
+        public override bool Equals(object obj)
+        {
+            var data = obj as User;
+            if (data.ID == this.ID) return true;
+            else return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.ID;
+        }
     }
 }

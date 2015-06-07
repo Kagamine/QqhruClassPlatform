@@ -13,6 +13,8 @@ namespace Qqhru.Models
 
         public string Title { get; set; }
 
+        public bool Show { get; set; }
+
         public DateTime Time { get; set; }
 
         [NotMapped]
@@ -74,6 +76,18 @@ namespace Qqhru.Models
             {
                 return Catalog.Title;
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            var data = obj as Article;
+            if (data.ID == this.ID) return true;
+            else return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.ID;
         }
     }
 }

@@ -1,0 +1,51 @@
+﻿@model Qqhru.Models.Group
+@{
+    ViewBag.Title = "Show";
+}
+
+<div class="left">
+    <h2>@Model.Title - 课组信息</h2>
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">ID</td>
+            <td>@Model.Title</td>
+        </tr>
+        <tr>
+            <td class="row-title">简介</td>
+            <td>@Model.Description</td>
+        </tr>
+        <tr>
+            <td class="row-title">组长</td>
+            <td><a href="/Teacher/Show/@Model.UserID">@Model.User.Name</a></td>
+        </tr>
+        <tr>
+            <td class="row-title">人数</td>
+            <td>@Model.Users.Count</td>
+        </tr>
+    </table>
+    <br />
+    <table class="table">
+        <thead class="tl">
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>职称</th>
+            </tr>
+        </thead>
+        <tbody data-collection="GroupMemberList">
+            <tr class="template groupmemberlist">
+                <td><a href="/Teacher/Show/$GroupMemberList.ID">$GroupMemberList.Name</a></td>
+                <td>$GroupMemberList._Sex</td>
+                <td>$GroupMemberList._Title</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="right">
+    @Html.Partial("~/Views/Group/Sidebar.cshtml")
+</div>
+
+<script>
+    Collection.GroupMemberList.gid = @Request.RequestContext.RouteData.Values["id"];
+</script>

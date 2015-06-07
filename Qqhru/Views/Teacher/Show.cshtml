@@ -24,7 +24,14 @@
         </tr>
         <tr>
             <td class="row-title">课组</td>
-            <td>@(Model.GroupID == null ? "无" : Model.Group.Title)</td>
+            @if (Model.GroupID == null)
+            {
+                <td>无</td>
+            }
+            else
+            {
+                <td><a href="/Group/Show/@Model.GroupID">@Model.Group.Title</a></td>
+            }
         </tr>
         <tr>
             <td class="row-title">职称</td>

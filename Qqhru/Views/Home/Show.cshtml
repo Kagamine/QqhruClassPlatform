@@ -1,0 +1,26 @@
+﻿@model Qqhru.Models.Article
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>@Model.Title</h2>
+<div class="subtitle">
+    <a href="/Teacher/Show/@Model.UserID">@Model.Username</a> @@<a href="/?cid=@Model.CatalogID">@Model.CatalogTitle</a> 发表于 @Model._Time
+</div>
+<div class="content">
+    @MvcHtmlString.Create(Model.Content)
+</div>
+<h3>评论</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'jkxykcpt';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
