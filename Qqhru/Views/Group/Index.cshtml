@@ -15,7 +15,7 @@
             <th>操作</th>
         </tr>
     </thead>
-    <tbody data-collection="GroupList" data-expression="flow">
+    <tbody data-collection="GroupList" data-expression="flow" data-identifier="ID">
         <tr class="template grouplist">
             <td>$GroupList.ID</td>
             <td>$GroupList.Title</td>
@@ -24,8 +24,14 @@
             <td>$GroupList.Count</td>
             <td>
                 <a href="/Group/Show/$GroupList.ID">详情</a>
-                <a href="/Group/Delete/$GroupList.ID">删除</a>
+                <a href="javascript: DeletePort('GroupDetail', $GroupList.ID)">删除</a>
             </td>
         </tr>
     </tbody>
 </table>
+
+<script>
+    DetailEvents.GroupDetail.onDeleted = function (key, port) {
+        $("#grouplist-collection-" + key).remove();
+    };
+</script>

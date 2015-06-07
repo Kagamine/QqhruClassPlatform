@@ -53,6 +53,7 @@ namespace Qqhru.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(string Title, int CatalogID, string Content)
         {
             DB.Articles.Add(new Models.Article {

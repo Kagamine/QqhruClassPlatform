@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
+using CodeComb.Yuuko.Schema;
 
 namespace Qqhru.Models
 {
     public class Catalog
     {
+        [SingleBy]
         public int ID { get; set; }
 
         public string Title { get; set; }
@@ -18,7 +20,20 @@ namespace Qqhru.Models
         public virtual ICollection<Article> Articles { get; set; }
 
         [NotMapped]
-        public int Count { get { return Articles.Count; } }
+        public int Count
+        {
+            get
+            {
+                try
+                {
+                    return Articles.Count;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+        }
 
         public override bool Equals(object obj)
         {

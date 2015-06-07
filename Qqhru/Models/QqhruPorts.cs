@@ -20,6 +20,7 @@ namespace Qqhru.Models
             Groups = DB.Groups;
             GroupMembers = DB.Users;
             Classes = DB.Classes;
+            PendingArticles = DB.Articles;
         }
 
         #region DBContext
@@ -34,6 +35,10 @@ namespace Qqhru.Models
         [OrderBy("Time desc")]
         [Paging(5)]
         public DbSet<Article> Articles { get; set; }
+
+        [Where("Show = false")]
+        [OrderBy("Time asc")]
+        public DbSet<Article> PendingArticles { get; set; }
 
         [OrderBy("Title desc")]
         [Paging(50)]
@@ -84,9 +89,26 @@ namespace Qqhru.Models
         [Binding("Classes")]
         public List<Class> ClassList { get; set; }
 
+        [CollectionPort]
+        [Binding("PendingArticles")]
+        public List<Article> PendingArticleList { get; set; }
+
         [DetailPort(DetailPortFunction.Delete, DetailPortFunction.Edit, DetailPortFunction.Insert)]
         [Binding("Catalogs")]
         public Catalog CatalogDetail { get; set; }
+
+        [DetailPort(DetailPortFunction.Delete, DetailPortFunction.Edit, DetailPortFunction.Insert)]
+        [Binding("Articles")]
+        public Catalog ArticleDetail { get; set; }
+
+        [DetailPort(DetailPortFunction.Delete, DetailPortFunction.Edit, DetailPortFunction.Insert)]
+        [Binding("Groups")]
+        public Group GroupDetail { get; set; }
+
+
+        [DetailPort(DetailPortFunction.Delete, DetailPortFunction.Edit, DetailPortFunction.Insert)]
+        [Binding("Teachers")]
+        public User TeacherDetail { get; set; }
         #endregion
     }
 }

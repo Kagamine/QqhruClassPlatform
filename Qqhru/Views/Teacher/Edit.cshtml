@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="left">
+    <h2>编辑教师信息</h2>
+    <table class="detail-table" data-detail="TeacherDetail">
+        <tr>
+            <td class="row-title">姓名</td>
+            <td><input type="text" class="textbox w-3" data-field="TeacherDetail.Name" /></td>
+        </tr>
+        <tr>
+            <td class="row-title">性别</td>
+            <td>
+                <select data-field="TeacherDetail.Sex">
+                    <option>男</option>
+                    <option>女</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">专业</td>
+            <td><input type="text" class="textbox w-3" data-field="TeacherDetail.Profession" /></td>
+        </tr>
+        <tr>
+            <td class="row-title">课组</td>
+            <td>
+                <select data-field="TeacherDetail.GroupID">
+                    <option>无</option>
+                    @foreach (Qqhru.Models.Group g in ViewBag.Groups)
+                    {
+                        <option value="@g.ID">@g.Title</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">职称</td>
+            <td>
+                <select data-field="TeacherDetail.Title">
+                    <option>助教</option>
+                    <option>讲师</option>
+                    <option>副教授</option>
+                    <option>教授</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <h2>科研信息</h2>
+    @using (Html.BeginForm("ResearchUpload", "Teacher", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p>
+            <input type="file" name="file" />
+        </p>
+        <p><input type="submit" value="上传" class="button blue" /></p>
+    }
+</div>
+<div class="right">@Html.Partial("~/Views/Teacher/Sidebar.cshtml")</div>
+
+<script>
+    Collection.ResearchList.uid = @Request.RequestContext.RouteData.Values["id"];
+</script>

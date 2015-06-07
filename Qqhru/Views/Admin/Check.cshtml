@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Check";
+}
+
+<h2>文章审核</h2>
+<table class="table">
+    <thead>
+        <tr class="tl">
+            <th>ID</th>
+            <th>标题</th>
+            <th>作者</th>
+            <th>时间</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody data-collection="PendingArticleList" data-Identifier="ID">
+        <tr class="template pendingarticlelist">
+            <td>$PendingArticleList.ID</td>
+            <td>$PendingArticleList.Title</td>
+            <td>$PendingArticleList.Username</td>
+            <td>$PendingArticleList._Time</td>
+            <td>
+                <a href="/Home/Show/$PendingArticleList.ID" target="_blank">查看文章内容</a>
+                <a href="/Admin/CheckPassed/$PendingArticleList.ID">通过审核</a>
+                <a href="javascript: DeletePort('ArticleDetail', $PendingArticleList.ID)">删除文章</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    DetailEvents.ArticleDetail.onDeleted = function (key, port) {
+        $("#pendingarticlelist-collection-" + key).remove();
+    }
+</script>

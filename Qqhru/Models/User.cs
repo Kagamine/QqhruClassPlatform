@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
+using CodeComb.Yuuko.Schema;
 
 namespace Qqhru.Models
 {
@@ -29,6 +30,7 @@ namespace Qqhru.Models
 
     public class User
     {
+        [SingleBy]
         public int ID { get; set; }
 
         public string Username { get; set; }
@@ -36,18 +38,8 @@ namespace Qqhru.Models
         public string Password { get; set; }
 
         public UserRole Role { get; set; }
-
-        [ForeignKey("Profession")]
-        public int? ProfessionID { get; set; }
-
-        [JsonIgnore]
-        public virtual Profession Profession { get; set; }
-
-        [NotMapped]
-        public string ProfessionTitle
-        {
-            get { return Profession != null ? Profession.Title : "无"; }
-        }
+        
+        public string Profession { get; set; }
 
         [ForeignKey("Group")]
         public int? GroupID { get; set; }

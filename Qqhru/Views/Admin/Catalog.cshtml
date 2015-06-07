@@ -20,8 +20,32 @@
             <td>$CatalogList.Title</td>
             <td>$CatalogList.Count</td>
             <td>
-                <a href="javascript: DeletePort('CatalogDetail', 'CatalogList.ID')">删除</a>
+                <a href="javascript: DeletePort('CatalogDetail', '$CatalogList.ID')">删除</a>
             </td>
         </tr>
     </tbody>
 </table>
+
+<br />
+<br />
+<h2>添加分类</h2>
+<table class="detail-table" data-detail="CatalogDetail" data-method="insert">
+    <tr>
+        <td class="row-title">名称</td>
+        <td><input type="text" class="textbox w-3" data-field="CatalogDetail.Title" /></td>
+    </tr>
+</table>
+<p>
+    <input id="btnInsert" type="button" class="green button" value="添加" />
+</p>
+<script>
+    DetailEvents.CatalogDetail.onInserted = function () {
+        window.location.reload();
+    };
+    DetailEvents.CatalogDetail.onDeleted = function (key, port) {
+        $("#cataloglist-collection-" + key).remove();
+    };
+    $("#btnInsert").click(function () {
+        InsertPort('CatalogDetail');
+    });
+</script>

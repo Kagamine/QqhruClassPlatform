@@ -15,10 +15,10 @@
         <tr>
             <td class="row-title">分类</td>
             <td>
-                <select>
+                <select name="CatalogID">
                     @foreach (Qqhru.Models.Catalog c in ViewBag.Catalogs)
                 {
-                        <option value="c.ID">@c.Title</option>
+                        <option value="@c.ID">@c.Title</option>
                     }
                 </select>
             </td>

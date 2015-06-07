@@ -21,5 +21,13 @@ namespace Qqhru.Controllers
             if (user == null) return Msg("没有找到该教师");
             return View(user);
         }
+
+        public ActionResult Edit(int id)
+        {
+            ViewBag.Groups = DB.Groups.ToList();
+            var user = DB.Users.Find(id);
+            if (user == null) return Msg("没有找到该教师");
+            return View(user);
+        }
     }
 }

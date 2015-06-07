@@ -33,8 +33,8 @@
     </div>
 </div>
 <script>
-    if (@Request.RequestContext.RouteData.Values["id"] != null)
+    if (@Request.QueryString["cid"] != null)
     {
-        Collection.ArticleList.cid = @Request.RequestContext.RouteData.Values["id"];
+        Collection.ArticleList.cid = @Request.QueryString["cid"];
     }
 </script>

@@ -15,7 +15,6 @@ namespace Qqhru.Models
         public DbSet<Class> Classes { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Research> Researches { get; set; }
-        public DbSet<Profession> Professions { get; set; }
 
         public QqhruContext() : base("mysqldb") { }
     }

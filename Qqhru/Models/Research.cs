@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
+using CodeComb.Yuuko.Schema;
 
 namespace Qqhru.Models
 {
     public class Research
     {
+        [SingleBy]
         public int ID { get; set; }
 
         public int UserID { get; set; }

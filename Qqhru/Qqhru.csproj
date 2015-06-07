@@ -335,7 +335,6 @@
     <Compile Include="Models\Catalog.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\Profession.cs" />
     <Compile Include="Models\QqhruContext.cs" />
     <Compile Include="Models\QqhruPorts.cs" />
     <Compile Include="Models\Research.cs" />
@@ -373,6 +372,8 @@
     <Content Include="Scripts\ckeditor\README.md" />
     <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
     <Content Include="Views\Admin\Catalog.cshtml" />
+    <Content Include="Views\Admin\Check.cshtml" />
+    <Content Include="Views\Teacher\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -17,21 +17,27 @@
             <th>操作</th>
         </tr>
     </thead>
-    <tbody data-collection="TeacherList" data-expression="flow">
+    <tbody data-collection="TeacherList" data-expression="flow" data-identifier="ID">
         <tr class="template teacherlist">
             <td>$TeacherList.ID</td>
             <td>$TeacherList.Name</td>
             <td>$TeacherList._Sex</td>
-            <td>$TeacherList.ProfessionTitle</td>
+            <td>$TeacherList.Profession</td>
             <td>$TeacherList.GroupTitle</td>
             <td>$TeacherList._Title</td>
             <td>
                 <a href="/Teacher/Show/$TeacherList.ID">查看详细资料</a>
                 @if (ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.超级管理员)
                 {
-                    <a href="/Teacher/Delete/$TeacherList.ID">删除用户</a>
+                    <a href="javascript: DeletePort: ('TeacherDetail', $TeacherList.ID)">删除用户</a>
                 }
             </td>
         </tr>
     </tbody>
 </table>
+
+<script>
+    DetailEvents.TeacherDetail.onDeleted = function (key, port) {
+        $("#teacherlist-collection-" + key).remove();
+    };
+</script>
