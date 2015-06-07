@@ -68,5 +68,11 @@ namespace Qqhru.Controllers
             if (CurrentUser.Role == Models.UserRole.老师) return Msg("文章发布成功，请等待管理员审核，审核通过后将显示在文章资源列表中。");
             else return Redirect("/");
         }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return Redirect("/Home/Login");
+        }
     }
 }

@@ -1,0 +1,40 @@
+﻿@model Qqhru.Models.Class
+@{
+    ViewBag.Title = "Edit";
+}
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<h2>编辑课程</h2>
+@using (Html.BeginForm("Edit", "Class", FormMethod.Post))
+{
+    <input type="hidden" value="@Model.ID" name="id" />
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">课程名</td>
+            <td>@Html.TextBoxFor(x => x.Title, new { @class = "textbox w-3" })</td>
+        </tr>
+        <tr>
+            <td class="row-title">学期</td>
+            <td>@Html.TextBoxFor(x => x.Title, new { @class = "textbox w-3" })</td>
+        </tr>
+        <tr>
+            <td class="row-title">教师</td>
+            <td>
+                <select name="UserID">
+                    @foreach (Qqhru.Models.User u in ViewBag.Users)
+                {
+                        <option value="@u.ID" @(Model.UserID == u.ID ? "selected" : "")>@u.Name</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">教学计划</td>
+            <td><textarea class="ckeditor" name="Plan"></textarea></td>
+        </tr>
+        <tr>
+            <td class="row-title">教案</td>
+            <td><textarea class="ckeditor" name="Plan2"></textarea></td>
+        </tr>
+    </table>
+    <p><input type="submit" value="保存" class="button blue" /></p>
+}

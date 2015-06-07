@@ -15,10 +15,18 @@
         <div class="container">
             <a href="#">计控学院课程平台</a>
             <a href="/">文章信息</a>
-            <a href="/Teacher">教师信息</a>
-            <a href="/Group">课组管理</a>
-            <a href="/Class">课程管理</a>
+            @if (ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.超级管理员)
+            {
+                <a href="/Teacher">教师信息</a>
+                <a href="/Group">课组管理</a>
+                <a href="/Class">课程管理</a>
+            }
             <a href="/Forum">论坛交流</a>
+            @if (ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.老师)
+            {
+                <a href="/Teacher/Show/@ViewBag.CurrentUser.ID">我的资料</a>
+            }
+            <a href="/Home/Logout">退出平台</a>
         </div>
     </div>
     <div class="container wrap-cont">
