@@ -21,15 +21,18 @@
         <ul data-collection="CatalogList">
             <li class="template cataloglist"><a href="/?cid=$CatalogList.ID">$CatalogList.Title</a> ($CatalogList.Count)</li>
         </ul>
-        <h3>操作</h3>
-        <ul>
-            <li><a href="/Home/Create">发表文章</a></li>
-            @if (ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.超级管理员)
-            {
-                <li><a href="/Admin/Check">审核文章</a></li>
-                <li><a href="/Admin/Catalog">分类管理</a></li>
-            }
-        </ul>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <h3>操作</h3>
+            <ul>
+                <li><a href="/Home/Create">发表文章</a></li>
+                @if (User.Identity.IsAuthenticated && ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.超级管理员)
+                {
+                    <li><a href="/Admin/Check">审核文章</a></li>
+                    <li><a href="/Admin/Catalog">分类管理</a></li>
+                }
+            </ul>
+        }
     </div>
 </div>
 <script>

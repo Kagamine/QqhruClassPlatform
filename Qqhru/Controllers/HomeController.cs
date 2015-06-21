@@ -10,7 +10,6 @@ namespace Qqhru.Controllers
     public class HomeController : BaseController
     {
         // GET: Home
-        [Authorize]
         public ActionResult Index()
         {
             return View();

@@ -13,14 +13,14 @@ namespace Qqhru.Models
         public QqhruPorts()
         {
             DB = new QqhruContext();
-            Catalogs = DB.Catalogs;
-            Articles = DB.Articles;
-            Teachers = DB.Users;
-            Researches = DB.Researches;
-            Groups = DB.Groups;
-            GroupMembers = DB.Users;
-            Classes = DB.Classes;
-            PendingArticles = DB.Articles;
+            Catalogs = DB.Catalogs.AsNoTracking();
+            Articles = DB.Articles.AsNoTracking();
+            Teachers = DB.Users.AsNoTracking();
+            Researches = DB.Researches.AsNoTracking();
+            Groups = DB.Groups.AsNoTracking();
+            GroupMembers = DB.Users.AsNoTracking();
+            Classes = DB.Classes.AsNoTracking();
+            PendingArticles = DB.Articles.AsNoTracking();
         }
 
         #region DBContext
@@ -29,35 +29,36 @@ namespace Qqhru.Models
         #endregion
 
         #region 数据源
-        public DbSet<Catalog> Catalogs { get; set; }
+        public IQueryable<Catalog> Catalogs { get; set; }
 
         [WhereOptional("CatalogID = $cid", typeof(int))]
+        [Where("Show = true")]
         [OrderBy("Time desc")]
         [Paging(5)]
-        public DbSet<Article> Articles { get; set; }
+        public IQueryable<Article> Articles { get; set; }
 
         [Where("Show = false")]
         [OrderBy("Time asc")]
-        public DbSet<Article> PendingArticles { get; set; }
+        public IQueryable<Article> PendingArticles { get; set; }
 
         [OrderBy("Title desc")]
         [Paging(50)]
-        public DbSet<User> Teachers { get; set; }
+        public IQueryable<User> Teachers { get; set; }
 
         [Where("UserID = $uid", typeof(int))]
         [OrderBy("Time desc")]
-        public DbSet<Research> Researches { get; set; }
+        public IQueryable<Research> Researches { get; set; }
 
         [OrderBy("ID asc")]
         [Paging(50)]
-        public DbSet<Group> Groups { get; set; }
+        public IQueryable<Group> Groups { get; set; }
 
         [Where("GroupID = $gid", typeof(int))]
-        public DbSet<User> GroupMembers { get; set; }
+        public IQueryable<User> GroupMembers { get; set; }
 
         [OrderBy("ID desc")]
         [Paging(50)]
-        public DbSet<Class> Classes { get; set; }
+        public IQueryable<Class> Classes { get; set; }
         #endregion
 
         #region Ports

@@ -51,10 +51,10 @@ namespace Qqhru.Models
             get
             {
                 var tmp = Content.Split('\n');
-                if (tmp.Count() > 10)
+                if (tmp.Count() > 20)
                 {
                     var ret = "";
-                    for (var i = 0; i < 9; i++)
+                    for (var i = 0; i < 19; i++)
                     {
                         ret += tmp[i];
                     }

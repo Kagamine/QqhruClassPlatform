@@ -22,7 +22,7 @@
                 <select name="UserID">
                     @foreach (Qqhru.Models.User u in ViewBag.Users)
                 {
-                        <option @(Model.UserID == u.ID ? "selected" : "")>@u.Name</option>
+                        <option value="@Model.UserID" @(Model.UserID == u.ID ? "selected" : "")>@u.Name</option>
                     }
                 </select>
             </td>

@@ -2,7 +2,7 @@
     <h3>操作</h3>
     <ul>
         <li><a href="/Teacher/Show/@Html.ViewContext.RouteData.Values["id"]">教师信息</a></li>
-        @if (ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.超级管理员 || Html.ViewContext.RouteData.Values["id"] == ViewBag.CurrentUser.ID.ToString())
+        @if (User.Identity.IsAuthenticated && (ViewBag.CurrentUser.Role == Qqhru.Models.UserRole.超级管理员 || Convert.ToInt32(Html.ViewContext.RouteData.Values["id"]) == ViewBag.CurrentUser.ID))
         {
             <li><a href="/Teacher/Edit/@Html.ViewContext.RouteData.Values["id"]">编辑教师</a></li>
         }

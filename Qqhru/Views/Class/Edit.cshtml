@@ -14,14 +14,14 @@
         </tr>
         <tr>
             <td class="row-title">学期</td>
-            <td>@Html.TextBoxFor(x => x.Title, new { @class = "textbox w-3" })</td>
+            <td>@Html.TextBoxFor(x => x.Term, new { @class = "textbox w-3" })</td>
         </tr>
         <tr>
             <td class="row-title">教师</td>
             <td>
                 <select name="UserID">
                     @foreach (Qqhru.Models.User u in ViewBag.Users)
-                {
+                    {
                         <option value="@u.ID" @(Model.UserID == u.ID ? "selected" : "")>@u.Name</option>
                     }
                 </select>

@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace Qqhru.Controllers
 {
-    [Authorize]
     public class ClassController : BaseController
     {
         // GET: Class
@@ -15,6 +14,7 @@ namespace Qqhru.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             var cls = new Models.Class
@@ -30,6 +30,7 @@ namespace Qqhru.Controllers
             return Redirect("/Class/Edit/" + cls.ID);
         }
 
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var cls = DB.Classes.Find(id);
@@ -37,6 +38,7 @@ namespace Qqhru.Controllers
             return View(cls);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Edit(int id, string Plan, string Plan2, string Term, int UserID)

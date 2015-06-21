@@ -17,7 +17,7 @@
             <th>操作</th>
         </tr>
     </thead>
-    <tbody data-collection="ClassList" data-expression="flow">
+    <tbody data-collection="ClassList" data-expression="flow" data-identifier="ID">
         <tr class="template classlist">
             <td>$ClassList.ID</td>
             <td>$ClassList.Title</td>
@@ -26,8 +26,11 @@
             <td>
                 <a target="_blank" href="/Class/Plan/$ClassList.ID">查看教学计划</a>
                 <a target="_blank" href="/Class/Plan2/$ClassList.ID">查看教案</a>
-                <a href="/Classes/Edit/$ClassList.ID">修改课程</a>
-                <a href="/Classes/Delete/$ClassList.ID">删除课程</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="/Class/Edit/$ClassList.ID" class="operator" data-user-id="@(ViewBag.CurrentUser.ID)">修改课程</a>
+                    <a href="javascript: DeletePort('ClassDetail', $ClassList.ID)">删除删除课程</a>
+                }
             </td>
         </tr>
     </tbody>
